@@ -56,3 +56,8 @@ func main() {
 	go politeWorker()
 	wg.Wait()
 }
+
+/**
+Polite worker was able to execute 221098 work loops.
+Greedy worker was able to execute 284270 work loops
+*/
