@@ -5,3 +5,6 @@
     part4: go的变股份编程范式
     part5: 可伸缩的并发设计
     part6: goroutines和go运行时任务调度
+
+# 参考文档
+    https://www.kancloud.cn/mutouzhang/go/596838
