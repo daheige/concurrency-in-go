@@ -7,6 +7,8 @@ import (
 
 func main() {
 	ticker := time.NewTicker(1 * time.Second)
+
+	//NewTicker+for实现每隔多久，指定一些操作
 	i := 0
 	for {
 		<-ticker.C

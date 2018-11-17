@@ -4,7 +4,9 @@
     part3: go的并发构建模块方案
     part4: go的并发编程范式
     part5: 可伸缩的并发设计
-    part6: goroutines和go运行时任务调度
+    part6: chan+goroutine使用和go运行时任务调度
+    part7: time.Ticker,Time.Tick定时器用法
+    part8: select用法
 
 # 参考文档
     https://www.kancloud.cn/mutouzhang/go/596838
