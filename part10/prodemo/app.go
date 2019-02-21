@@ -21,7 +21,7 @@ func main() {
 		go production(msgCh, done)
 	}
 
-	go consumer(msgCh, 1)
+	go consumer(msgCh)
 
 	ch := make(chan os.Signal, 1)
 	// We'll accept graceful shutdowns when quit via SIGINT (Ctrl+C)
@@ -63,7 +63,7 @@ func production(msgCh chan<- string, done <-chan struct{}) {
 	}
 }
 
-func consumer(msgCh <-chan string, i int) {
+func consumer(msgCh <-chan string) {
 	for msg := range msgCh {
 		log.Println("recive data: ", msg)
 	}
