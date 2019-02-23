@@ -1,4 +1,6 @@
 //执行go build编译该demo
+//生产者和消费者运行模式： production:consumer = n:1
+//其他运行模式: 1:1 1:n n:n
 package main
 
 import (
