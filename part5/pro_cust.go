@@ -19,7 +19,7 @@ func consumer(c <-chan int, done chan struct{}) {
 		fmt.Println("receive data:", v)
 	}
 
-	close(done) //关闭通道后,<-done就会立即释放
+	close(done) //当消费完毕后，关闭通道,<-done就会立即释放
 }
 
 func main() {

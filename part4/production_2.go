@@ -19,6 +19,7 @@ func main() {
 		fmt.Println(buff.String())
 	}
 
+	//通过wg信号量计数器保证goroutine执行完毕
 	var wg sync.WaitGroup
 	wg.Add(2)
 	data := []byte("golang")

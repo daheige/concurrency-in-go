@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -31,5 +32,6 @@ func main() {
 	go printNum2(10)
 
 	for {
+		runtime.Gosched() //让出cpu执行权限给其他goroutine
 	}
 }
