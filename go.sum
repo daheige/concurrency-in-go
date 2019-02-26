@@ -1,5 +1,5 @@
-github.com/daheige/thinkgo v0.0.0-20190223144613-d5f331825346 h1:XgQGc3ZB9vQnkSWvwInz35qi8G/id6V5UdyO+eBOfbA=
-github.com/daheige/thinkgo v0.0.0-20190223144613-d5f331825346/go.mod h1:EaZ3YLPV6Vi0480Lrg4Z83JDrXILZjQcdr0n6m11/IE=
+github.com/daheige/thinkgo v1.0.3 h1:bkQQhoLJum8vUzGBMnIGS8/xKQRxwNcqYMYcuffzxY0=
+github.com/daheige/thinkgo v1.0.3/go.mod h1:EaZ3YLPV6Vi0480Lrg4Z83JDrXILZjQcdr0n6m11/IE=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/denisenkom/go-mssqldb v0.0.0-20181014144952-4e0d7dc8888f/go.mod h1:xN/JuLBIz4bjkxNmByTiV1IbhfnYb6oo99phBn4Eqhc=
 github.com/erikstmartin/go-testdb v0.0.0-20160219214506-8d10e4a1bae5/go.mod h1:a2zkGnVExMxdzMo3M0Hi/3sEU+cWnZpSni0O6/Yb/P0=
