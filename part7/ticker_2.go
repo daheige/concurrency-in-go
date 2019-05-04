@@ -9,7 +9,8 @@ import (
 func main() {
 	//执行一次定时器操作
 	tick := time.NewTicker(1 * time.Second)
-	t := <-tick.C
+	t := <-tick.C //读取通道中的时间time
+
 	log.Println(111)
 	log.Println("t: ", t)
 
