@@ -7,14 +7,14 @@ import (
 
 func main() {
 	var ch = make(chan int)
-	quit := make(chan bool)
+	quit := make(chan bool) //退出独立goroutine信号
 	go func() {
 		for {
 			select {
 			case num := <-ch:
 				fmt.Println("num is ", num)
 			case <-time.After(3 * time.Second):
-				fmt.Println("timeourt")
+				fmt.Println("timeout")
 				quit <- true
 			}
 		}
