@@ -11,6 +11,7 @@
     part9: 关于goroutine出惊慌或致命错误的处理
     part10: 关于chan在通信过程中，生产者和消费者运行模式研究
     part11: goroutine调度机制MPG
+    part12: 采用context+select实现超时调用
 
 # 参考文档
     https://www.kancloud.cn/mutouzhang/go/596838
