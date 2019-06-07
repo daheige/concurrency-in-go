@@ -1,3 +1,5 @@
 module concurrency-in-go
 
-require github.com/daheige/thinkgo v1.0.3
+go 1.12
+
+require github.com/daheige/thinkgo v1.1.6
