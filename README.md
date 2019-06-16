@@ -12,6 +12,7 @@
     part10: 关于chan在通信过程中，生产者和消费者运行模式研究
     part11: goroutine调度机制MPG
     part12: 采用context+select实现超时调用
+    part13: golang多核cpu计算
 
 # 参考文档
     https://www.kancloud.cn/mutouzhang/go/596838
