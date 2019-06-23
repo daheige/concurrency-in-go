@@ -82,6 +82,10 @@ func (l *LocalCache) Count() int {
 }
 
 func (l *LocalCache) Incr(key string, step int64) (int64, error) {
+	if key == "" {
+		return 0, errors.New("key is empty")
+	}
+
 	l.Lock()
 	defer l.Unlock()
 
@@ -94,7 +98,12 @@ func (l *LocalCache) Incr(key string, step int64) (int64, error) {
 		return cnt, nil
 	}
 
-	return 0, nil
+	l.Data[key] = Item{
+		Object:     1,
+		Expiration: 0,
+	}
+
+	return 1, nil
 }
 
 func NewCache(cacheType string) (Cache, error) {
