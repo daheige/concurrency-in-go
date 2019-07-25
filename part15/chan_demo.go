@@ -28,7 +28,10 @@ func main() {
 	gNums := 1000
 	total := 10 * 10000
 	ch := make(chan struct{}, gNums) //缓冲区
-	done := make(chan bool, total)   //bool占据1字节，int占据4字节或8字节
+	// done := make(chan bool, total)   //bool占据1字节，int占据4字节或8字节
+	done := make(chan struct{}, total) //bool占据1字节，int占据4字节或8字节
+
+	emptyStruct := struct{}{} //复用空结构体,这里基本上不占据内存
 
 	for i := 0; i < total; i++ {
 		// ch <- struct{}{}
@@ -40,11 +43,14 @@ func main() {
 				}
 
 				<-ch //必须在这里取出和放入done
-				done <- true
+				// done <- true
+				done <- emptyStruct
 			}()
 
 			//该句建议放在goroutine里面
-			ch <- struct{}{}
+			// ch <- struct{}{}
+			ch <- emptyStruct
+
 			w()
 			log.Println("current index: ", i)
 			log.Println("hello")
@@ -54,7 +60,7 @@ func main() {
 	//取出done chan
 	for n := 0; n < total; n++ {
 		log.Println("n = ", n)
-		log.Println(<-done)
+		<-done
 	}
 
 	log.Println("cost time: ", time.Now().Sub(t).Seconds())
