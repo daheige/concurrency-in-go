@@ -26,7 +26,7 @@ func main() {
 
 	t := time.Now()
 	gNums := 1000
-	total := 10 * 10000
+	total := 60 * 10000
 	ch := make(chan struct{}, gNums) //缓冲区
 	// done := make(chan bool, total)   //bool占据1字节，int占据4字节或8字节
 	done := make(chan struct{}, total) //bool占据1字节，int占据4字节或8字节
