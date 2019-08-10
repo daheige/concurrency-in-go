@@ -1,4 +1,5 @@
 # concurrency-in-go
+
     如下部分，用实际的例子分析了go并发编程为什么难写，以及对go chan,goroutine进行了全面剖析。
     part1: 并发编程为什么难写
     part2: 代码建模:序列化交互处理
@@ -15,10 +16,13 @@
     part13: golang多核cpu计算
     part14: golang interface实战
     part15: 控制goroutine并发数
+    part16: 限流控制
 
 # 参考文档
+
     https://www.kancloud.cn/mutouzhang/go/596838
     https://github.com/daheige/Go-Questions/blob/master/channel/12%20-%20channel%20%E6%9C%89%E5%93%AA%E4%BA%9B%E5%BA%94%E7%94%A8.md
-    
+
 # License
+
     MIT
