@@ -17,6 +17,7 @@
     part14: golang interface实战
     part15: 控制goroutine并发数
     part16: 限流控制
+    part17: go程序平滑退出机制
 
 # 参考文档
 
