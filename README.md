@@ -3,7 +3,7 @@
     如下部分，用实际的例子分析了go并发编程为什么难写，以及对go chan,goroutine进行了全面剖析。
     part1: 并发编程为什么难写
     part2: 代码建模:序列化交互处理
-    part3: go的并发构建模块方案
+    part3: go的并发构建模块方案和goroutine通信方式
     part4: go的并发编程范式
     part5: 可伸缩的并发设计
     part6: chan+goroutine使用和go运行时任务调度
