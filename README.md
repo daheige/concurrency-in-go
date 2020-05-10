@@ -20,6 +20,7 @@
     part17: go程序平滑退出机制
     part18: 关于堆栈和逃逸分析
     part19: 关于sync.WaitGroup协程计数器和goroutine通信机制
+    part20: safe go安全的goroutine执行
 
 # 参考文档
 
