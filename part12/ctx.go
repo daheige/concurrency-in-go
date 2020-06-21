@@ -45,10 +45,23 @@ func doStuff(done chan struct{}) {
 
 func main() {
 	log.Println("task exec begin")
-	stuffHandler()
+	// stuffHandler()
 	handler(5)
 	log.Println("task exec end")
+	// for {
+	// }
 }
+
+/**
+把上面的for{}打开
+% go run ctx.go
+2020/06/21 17:31:11 task exec begin
+2020/06/21 17:31:16 timeout
+2020/06/21 17:31:16 task exec end
+2020/06/21 17:31:21 1
+2020/06/21 17:31:21 daheige
+2020/06/21 17:31:21 hahaha
+*/
 
 //精准rpc调用
 //启动一个协程并执行 RPC 调用，同时初始化一个超时定时器。然后在主协程中同时监听 RPC 完成事件信号以及定时器信号。
@@ -66,6 +79,8 @@ func handler(t int) {
 	done := make(chan struct{}, 1)
 	go func() {
 		rpc(ctx, 1)
+
+		log.Println("hahaha")
 		done <- struct{}{}
 	}()
 
@@ -79,7 +94,7 @@ func handler(t int) {
 
 //模拟rpc调用
 func rpc(ctx context.Context, i int) {
-	// time.Sleep(10 * time.Second) //停顿10s 打开模拟超时
+	time.Sleep(10 * time.Second) //停顿10s 打开模拟超时
 	log.Println(i)
 	log.Println(ctx.Value("name"))
 }
