@@ -24,6 +24,10 @@
     part21: go work pool探讨
     part22: goroutine panic捕获处理
 
+# 关于main退出
+    对于go v1.14.x版本之后，goroutine可抢夺，所以select{}方式不可取
+    参考：https://github.com/daheige/concurrency-in-go/blob/master/part8/select_block_exit.go
+    
 # 参考文档
 
     https://www.kancloud.cn/mutouzhang/go/596838
