@@ -22,6 +22,7 @@
     part19: 关于sync.WaitGroup协程计数器和goroutine通信机制
     part20: safe go安全的goroutine执行
     part21: go work pool探讨
+    part22: goroutine panic捕获处理
 
 # 参考文档
 
