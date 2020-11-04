@@ -6,7 +6,7 @@ import (
 )
 /**
 panic捕获是要看处在什么样的上下文范围中
-一个原则：携程运行要看处在什么样的上下文范围中，尽量在独立携程中捕获panic，因为panic捕获跨携程进行捕获
+一个原则：携程运行要看处在什么样的上下文范围中，尽量在独立携程中捕获panic，因为panic不能跨携程捕获
 */
 func main() {
 	log.Println("start task...")
@@ -53,7 +53,7 @@ func doWork() Task {
 	return func() {
 		// 如果是放在函数中执行的话，这里需要进行对本函数出现的panic进行捕获
 		// 所以panic捕获是要看处在什么样的上下文范围中
-		// 一个原则，携程运行要看处在什么样的上下文范围中，尽量在独立携程中捕获panic，因为panic捕获跨携程进行捕获
+		// 一个原则，携程运行要看处在什么样的上下文范围中，尽量在独立携程中捕获panic，因为panic不能跨携程捕获
 		defer catchRecover()
 
 		log.Println(1234)
