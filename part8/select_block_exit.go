@@ -20,7 +20,7 @@ func main() {
 	<-done
 
 	// time.Sleep(1 * time.Second)
-	// go version >=14.x.x版本后，这里会发生携程阻塞，死锁，从而panic
+	// go version >=1.14.x版本后，这里会发生携程阻塞，死锁，从而panic
 	// 这种做法也是不可取
 	// select {}
 
