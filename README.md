@@ -9,7 +9,7 @@
     part6: chan+goroutine使用和go运行时任务调度
     part7: time.Ticker,Time.Tick定时器用法
     part8: select用法
-    part9: 关于goroutine出惊慌或致命错误的处理
+    part9: 关于goroutine出现惊慌或致命错误的处理
     part10: 关于chan在通信过程中，生产者和消费者运行模式研究
     part11: goroutine调度机制MPG
     part12: 采用context+select实现超时调用
@@ -22,7 +22,7 @@
     part19: 关于sync.WaitGroup协程计数器和goroutine通信机制
     part20: safe go安全的goroutine执行
     part21: go work pool探讨
-    part22: goroutine panic捕获处理
+    part22: goroutine panic捕获处理以及超时处理探讨
 
 # 关于main退出
     对于go v1.14.x版本之后，goroutine可抢夺，所以select{}方式不可取
