@@ -23,8 +23,10 @@
     part20: safe go安全的goroutine执行
     part21: go work pool探讨
     part22: goroutine panic捕获处理以及超时处理探讨
+    part23: panic在http server如何捕获
 
-# 关于main退出
+# 关于http server main平滑退出
+
     对于go v1.14.x版本之后，goroutine可抢夺，所以select{}方式不可取
     参考：https://github.com/daheige/concurrency-in-go/blob/master/part8/select_block_exit.go
     
