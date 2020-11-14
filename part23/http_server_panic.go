@@ -9,7 +9,7 @@ import (
 
 // http server服务中，对于每个处理器函数或处理器，一般建议对panic进行捕获实现recover恢复
 // 底层源码对于每个请求都是一个独立携程go serve处理，如果运行的独立携程发生了panic，并且不是指定的
-// http.ErrAbortHandler，这个时候出现的panic没捕获到，就会导致整个http server服务进程退出。
+// http.ErrAbortHandler，才可以捕获到panic，对于其他情况出现的panic没捕获到，就会导致整个http server服务进程退出。
 // 因为panic不能跨携程进行捕获
 // 如果因为一些没有捕获的panic在runtime过程中，会导致服务进程崩溃退出，也就是整个main进行退出
 // 对于一些web框架，比如gin,gorilla/mux,go-chi/chi都是采用中间件的方式，在middleware中进行捕获
