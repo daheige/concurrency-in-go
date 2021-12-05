@@ -22,7 +22,7 @@
     part19: 关于sync.WaitGroup协程计数器和goroutine通信机制
     part20: safe go安全的goroutine执行
     part21: go work pool探讨
-    part22: goroutine panic捕获处理以及超时处理探讨
+    part22: go timeout探讨和panic捕获处理
     part23: panic在http server如何捕获
 
 # 关于http server main平滑退出

@@ -7,12 +7,12 @@ import (
 )
 
 func main() {
-	AsyncCall(func() {
-		for i := 0; i < 100; i++ {
-			log.Println("current index: ", i)
-			time.Sleep(200 * time.Millisecond)
-		}
-	}, 1*time.Second)
+	// AsyncCall(func() {
+	// 	for i := 0; i < 100; i++ {
+	// 		log.Println("current index: ", i)
+	// 		time.Sleep(200 * time.Millisecond)
+	// 	}
+	// }, 1*time.Second)
 
 	AsyncCallByCtx(func() {
 		for i := 0; i < 100; i++ {
@@ -46,7 +46,9 @@ func AsyncCall(fn func(), timeout time.Duration) {
 
 // AsyncCallByCtx 通过ctx timeout方式实现fn调度，超时就取消fn执行
 func AsyncCallByCtx(fn func(), timeout time.Duration) {
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+	ctx := context.Background()
+	ctx = context.WithValue(ctx, "abc", 123)
+	ctx, cancel := context.WithTimeout(ctx, timeout)
 	done := make(chan struct{}, 1)
 	go func() {
 		defer close(done)
@@ -60,6 +62,7 @@ func AsyncCallByCtx(fn func(), timeout time.Duration) {
 			cancel()
 		}
 
+		log.Println("abc: ", ctx.Value("abc")) // abc:  123 这里从上下文获取key
 		log.Println("timeout")
 	case <-done:
 		log.Println("call success")

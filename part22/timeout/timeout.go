@@ -37,7 +37,6 @@ func AsyncCall() {
 // AsyncCallWithCtx do task with ctx
 func AsyncCallWithCtx(ctx context.Context) {
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
-	defer cancel()
 
 	done := make(chan struct{}, 1)
 	go func(ctx context.Context) {
@@ -48,12 +47,17 @@ func AsyncCallWithCtx(ctx context.Context) {
 
 		log.Println("send msg: hello")
 		close(done)
+		log.Println("go func exec ok") // 还是会继续执行
 	}(ctx)
 
 	select {
 	case <-done:
 		log.Println("call success")
 	case <-ctx.Done():
+		if ctx.Err() == context.DeadlineExceeded {
+			cancel()
+		}
+
 		log.Println("timeout")
 		log.Println("timeout reason: ", ctx.Err())
 	}
@@ -63,11 +67,13 @@ func main() {
 	// AsyncCall()
 	AsyncCallWithCtx(context.Background())
 
-	// 如果把下面的信号量监控机制全部打开，对于http 服务来说，依然会执行send msg: hello,其实这里的超时限制，可以对于mysql,redis,mongodb 这样的服务调用设置超时
-	// 比如调用http api接口，调用方可以设置超时，而不是服务端超时限制，服务端超时这个是一个伪命题，因为虽然提前返回了，但是后续的操作依然会执行
+	// 如果把下面的信号量监控机制全部打开，对于http 服务来说，依然会执行send msg: hello
+	// 其实这里的超时限制，对于mysql,redis,mongodb 这样的服务调用设置超时，主要是防止一直等待阻塞
+	// 比如调用http api接口，调用方可以设置超时，而不是服务端超时限制
+	// 服务端超时这个是一个伪命题，因为虽然提前返回了，但是后续的操作依然会执行
 	ch := make(chan os.Signal, 1)
 	// We'll accept graceful shutdowns when quit via SIGINT (Ctrl+C)
-	// recivie signal to exit main goroutine
+	// recv signal to exit main goroutine
 	// window signal
 	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM, os.Interrupt, syscall.SIGHUP)
 
@@ -90,9 +96,10 @@ func main() {
 
 /**
 % go run timeout.go
-2020/06/21 17:40:12 timeout
-2020/06/21 17:40:12 timeout reason:  context deadline exceeded
-2020/06/21 17:40:13 send msg: hello
-^C2020/06/21 17:40:46 exit signal:  interrupt
-2020/06/21 17:40:51 shutting down
+2021/12/05 10:23:12 timeout
+2021/12/05 10:23:12 timeout reason:  context deadline exceeded
+2021/12/05 10:23:13 send msg: hello
+2021/12/05 10:23:13 go func exec ok
+2021/12/05 10:23:42 exit signal:  interrupt
+2021/12/05 10:23:47 shutting down
 */
